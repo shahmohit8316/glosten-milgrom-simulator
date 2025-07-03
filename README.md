@@ -1,49 +1,85 @@
-# glosten-milgrom-simulator
-Deep simulation of Glosten-Milgrom microstructure model for $500M+/year alpha extraction
+# 📈 Glosten-Milgrom Simulator
 
-# 🧠 Glosten-Milgrom Alpha Simulator (1985)
-> Full-stack, belief-driven, market-making simulation framework designed to extract up to **£200 million/year alpha** under asymmetric information.
+> “Markets reveal information through price — this simulator reveals how.”
 
----
+A full-scale OCaml implementation of the legendary **Glosten-Milgrom (1985)** market microstructure model. This repo is not a toy project — it's a step toward building **live alpha-generating engines** based on asymmetric information and Bayesian price dynamics.
 
-## 🔥 Purpose
-
-This project simulates the **Glosten-Milgrom (1985)** market microstructure model from first principles.
-
-The simulator models:
-- Bayesian market maker belief updates
-- Strategic order flow under private information
-- Spread formation dynamics under asymmetric risk
-- Real-time **alpha extraction** pipelines
-
-> 💡 *Unlike most academic toy examples, this repo evolves toward a live-ready quant engine replicating real-time market dynamics.*
+If Jane Street, Nasdaq, and a PhD in stochastic control had a child — it would look like this.
 
 ---
 
-## 🧮 Core Ideas
+## 🚀 Purpose
 
-| Concept | Description |
+This repo simulates an electronic market with **informed traders**, **noise traders**, and **Bayesian market makers**, enabling advanced experimentation with:
+
+- **Belief dynamics**
+- **Bid-ask spread evolution**
+- **Signal-to-noise interactions**
+- **PnL flows for informed agents**
+
+---
+
+## 📁 Folder Structure
+
+| Folder | Description |
 |--------|-------------|
-| **Asymmetric Info** | Some agents (insiders) have private knowledge of the true asset value. |
-| **Market Maker (MM)** | Sets bid/ask prices based on belief updates after each trade. |
-| **Belief Update** | MM uses Bayesian inference to update their estimate of the asset value. |
-| **Spread Formation** | Reflects MM’s risk premium due to information asymmetry. |
-| **Alpha Opportunity** | Extracted from modeling agent interaction before equilibrium is fully priced in.
+| `alpha_extraction/` | Code to compute, visualize, and analyze alpha (e.g., `pnl_analysis.ml`, `alpha_curve.ml`) |
+| `core_model/` | Core Glosten-Milgrom mechanics — Bayesian belief updater, bid-ask engine, signal model |
+| `math_engine/` | Pure math modules for variance, expectation, and Bayes updates |
+| `simulations/` | Realistic scenario scripts (base case, noisy vs informed, signal sweep) |
+| `docs/` | Theoretical derivations, model summaries, parameter tables, equations |
+| `README.md` | This file
 
 ---
 
-## 📂 Directory Structure
+## 🧠 Core Concepts Implemented
+
+✅ Bayesian price updates  
+✅ Informed vs uninformed flow  
+✅ Spread dynamics from signal precision  
+✅ Market maker's rational expectations  
+✅ Noise masking + liquidity incentives
+
+---
+
+## 🧪 Example Simulations
+
+| Name | File |
+|------|------|
+| Base Case | `simulations/base_case.ml` |
+| Signal-Noise Sweep | `simulations/signal_noise_sweep.ml` |
+| Spread PnL Evolution | `alpha_extraction/alpha_curve.ml` |
+| Belief Drift | `core_model/belief_update.ml` |
+
+---
+
+## 📊 Outputs You Can Generate
+
+- PnL vs information advantage
+- Spread vs noise ratio
+- Execution probability heatmaps
+- Market maker revenue charts
+- Belief timeline animations
+
+---
+
+## 🛠️ Tech Stack
+
+- **Language**: OCaml (100%)
+- **Build System**: `dune`, `make`
+- **Visualization**: Interfaces with Python/matplotlib or JS frontends (future)
+- **Style**: Modular FP + type-safe Bayesian inference
+
+---
+
+## 📦 How to Run
 
 ```bash
-glosten-milgrom-simulator/
-├── alpha_extraction/       # Real-time alpha curves, PnL computation
-├── benchmarks/             # Performance tests, stress tests, adversarial setups
-├── config/                 # Tunable parameters: signal noise, MM risk aversion
-├── core_model/             # Core files: belief update, signal model, bid/ask engine
-├── docs/                   # Theoretical documentation, model derivations
-├── experiments/            # Empirical test setups across signal ranges
-├── math_engine/            # Bayesian, expectation, variance computation modules
-├── simulations/            # Simulation scripts (main loops, multi-agent)
-├── visuals/                # Charts, heatmaps, spread visualizations
-└── README.md               # This file
+git clone https://github.com/shahmohit8316/glosten-milgrom-simulator.git
+cd glosten-milgrom-simulator
 
+# Build
+dune build
+
+# Run a simulation
+dune exec simulations/base_case.ml
